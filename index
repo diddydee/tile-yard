@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>TBD</title>
+		<style>
+			.tile{
+				background: none;
+        background-color: #654321;
+        border: none;
+        height: 100px;
+        width: 100px;
+			}
+      img{
+      	height: 100%; width: 100%;
+        background: none;
+      }
+      body{
+      	background-image: url("https://www.publicdomainpictures.net/pictures/30000/nahled/solid-green-background.jpg")
+      }
+      #Log{
+      	text-align: center;
+      }
+			.miniLabel{
+				text-align: right;
+			}
+      
+		</style>
+	</head>
+
+	<body>
+  	<div id="tilesDiv">
+    <button id="tile1" class="tile"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
+    <button id="tile2" class="tile"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
+    <button id="tile3" class="tile"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
+    <button id="tile4" class="tile"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>  
+    <button id="tile5" class="tile"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
+  	</div>
+    <hr>
+    <div id="Information">
+    	<span class="miniLabel">Tile Details</span>
+      <span id="Log" class="miniLabel">Log</span>
+      <p>Terrain:<span id="terrain"> </span></p>
+      <p>Status:<span id="status"> </span></p>
+
+    </div>
+    
+    <div id="Shop">
+    
+    </div>
+    
+    
+    
+    <script>
+      var tileAmount = 2;
+      var t1Terrain = " Dirt";
+    	var t1Status = " Empty";
+      var dirtTilesVal = 1;
+   
+      var t2Terrain = "Dirt";
+      var t2Status = "Empty";
+      var wormSpawnChance = 500;
+      var tileSrc = "https://www.transparenttextures.com/patterns/debut-light.png";
+      var random1thru1000 = Math.floor(Math.random() * 1000) + 1;
+      
+      tile1.onclick = function() {
+      	document.getElementById("terrain").innerHTML = t1Terrain;
+      	document.getElementById("status").innerHTML = t1Status;
+      }
+      tile2.onclick = function() {
+      	document.getElementById("terrain").innerHTML = t2Terrain;
+      	document.getElementById("status").innerHTML = t2Status;
+      }
+      setInterval(function() {  
+        var random1thru1000 = Math.floor(Math.random() * 1000) + 1;
+        if (dirtTilesVal > 0 && random1thru1000 <= wormSpawnChance){
+        	var tiles = tilesDiv.getElementsByTagName("img");
+          for (var i=0; i<tileAmount; ++i){
+            console.log(tileSrc);
+            if (tiles[i].src == tileSrc){
+             console.log(i);
+           	 tiles[i].src = "https://ui-ex.com/images/worm-drawing-cute-5.png";
+             t1Status = "Worm";
+             break;
+          	}
+					}
+        }
+      }, 1000);
+    </script>
+	</body>
+  
