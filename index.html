@@ -24,40 +24,65 @@
       	margin: auto;
         text-align: center;
       }
+      
+      .separate {
+      	position: relative;
+      }
+      
+      .separate > span {
+      	position: absolute;
+      }
+      
+      #Log {
+        right: 0;
+      }
+      
+      #TileDetails {
+      	left: 0;
+      }
+      
+      button {
+      	padding: 0;
+      }
 
 		</style>
 	</head>
 
 	<body>
     <div id="tilesDiv">
-    <button id="tile1" class="tile"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
-    <button id="tile2" class="tile"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
-    <button id="tile3" class="tile"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
-    <button id="tile4" class="tile"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>  
+    <button id="tile1" class="tile" data-status="Empty" data-terrain="Dirt"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
+    <button id="tile2" class="tile" data-status="Empty" data-terrain="Dirt"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
+    <button id="tile3" class="tile" data-status="Empty" data-terrain="Dirt"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
+    <button id="tile4" class="tile" data-status="Empty" data-terrain="Dirt"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>  
     <br>
-    <button id="tile5" class="tile"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
-    <button id="tile6" class="tile"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
-    <button id="tile7" class="tile"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
-    <button id="tile8" class="tile"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>  
+    <button id="tile5" class="tile" data-status="Empty" data-terrain="Dirt"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
+    <button id="tile6" class="tile" data-status="Empty" data-terrain="Dirt"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
+    <button id="tile7" class="tile" data-status="Empty" data-terrain="Dirt"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
+    <button id="tile8" class="tile" data-status="Empty" data-terrain="Dirt"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>  
     <br>
-    <button id="tile9" class="tile"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
-    <button id="tile10" class="tile"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
-    <button id="tile11" class="tile"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
-    <button id="tile12" class="tile"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>  
+    <button id="tile9" class="tile" data-status="Empty" data-terrain="Dirt"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
+    <button id="tile10" class="tile" data-status="Empty" data-terrain="Dirt"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
+    <button id="tile11" class="tile" data-status="Empty" data-terrain="Dirt"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
+    <button id="tile12" class="tile" data-status="Empty" data-terrain="Dirt"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>  
     <br>
-    <button id="tile13" class="tile"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
-    <button id="tile14" class="tile"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
-    <button id="tile15" class="tile"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
-    <button id="tile16" class="tile"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>  
+    <button id="tile13" class="tile" data-status="Empty" data-terrain="Dirt"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
+    <button id="tile14" class="tile" data-status="Empty" data-terrain="Dirt"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
+    <button id="tile15" class="tile" data-status="Empty" data-terrain="Dirt"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>
+    <button id="tile16" class="tile" data-status="Empty" data-terrain="Dirt"><img src="https://www.transparenttextures.com/patterns/debut-light.png"></button>  
   	</div>
     
     <hr>
     <div id="TileDetails">
-    	<span class="miniLabel">Tile Details</span>
-      <div id="logDiv"><span id="Log" class="miniLabel">Log</span></div>
-      <p>Terrain:<span id="terrain"> </span></p>
-      <p>Status:<span id="status"> </span></p>
-
+      <div class="separate">
+    		<span id="TileDetails" class="miniLabel">
+          Tile Details
+          <p>Terrain:<span id="terrain"> </span></p>
+          <input type="radio" class="terrainRadio" value="Dirt" checked> Dirt |
+          <input type="radio" class="terrainRadio" value="Snow"> Snow<br>
+          <p>Status:<span id="status"> </span></p>
+        </span>
+        <span id="Log" class="miniLabel">Log</span>
+      </div>
     </div>
     
     <div id="Shop">
@@ -67,7 +92,7 @@
     
     
     <script>
-      var tileAmount = 2;
+      var tileAmount = 16;
       var t1Terrain = " Dirt";
     	var t1Status = " Empty";
       var dirtTilesVal = 1;
@@ -78,14 +103,38 @@
       var tileSrc = "https://www.transparenttextures.com/patterns/debut-light.png";
       var random1thru1000 = Math.floor(Math.random() * 1000) + 1;
       
-      tile1.onclick = function() {
+      var tiles = document.getElementsByClassName("tile");
+      for (var i=0; i<tiles.length; i++) {
+      	tiles[i].onclick = function() {
+          if (this.getAttribute('data-status')) {
+      			document.getElementById("status").innerHTML = " " + this.getAttribute('data-status');
+            document.getElementById("terrain").innerHTML = " " + this.getAttribute('data-terrain');
+          }
+        }
+      }
+      
+      var terrainRadios = document.getElementsByClassName("terrainRadio");
+      for (var i=0; i<terrainRadios.length; i++) {
+      	terrainRadios[i].onchange = function() {
+          if (this.focused) {
+            terrainText = this.value;
+            var activeElement = document.activeElement;
+            if (activeElement.className == "tile") {
+              activeElement.setAttribute('data-terrain', terrainText);
+            }
+          }
+        }
+      }
+            
+      
+      /*tile1.onclick = function() {
       	document.getElementById("terrain").innerHTML = t1Terrain;
       	document.getElementById("status").innerHTML = t1Status;
       }
       tile2.onclick = function() {
       	document.getElementById("terrain").innerHTML = t2Terrain;
       	document.getElementById("status").innerHTML = t2Status;
-      }
+      }*/
       setInterval(function() {  
         var random1thru1000 = Math.floor(Math.random() * 1000) + 1;
         if (dirtTilesVal > 0 && random1thru1000 <= wormSpawnChance){
@@ -95,7 +144,7 @@
             if (tiles[i].src == tileSrc){
              console.log(i);
            	 tiles[i].src = "https://ui-ex.com/images/worm-drawing-cute-5.png";
-             t1Status = "Worm";
+             tiles[i].
              break;
           	}
 					}
